@@ -15,14 +15,14 @@ meals = collection.find({})
 for meal in meals:
     ic(meal)
 
-    st.header(f"[{meal['title']}]({meal['url']})", divider='rainbow')
+    st.header(f"[{meal['title']}]({meal['url']})", divider="rainbow")
 
-    st.write(f"{meal["eaten_on"].strftime("%B %d, %Y")}")
+    st.write(f"{meal['eaten_on'].strftime('%B %d, %Y')}")
 
     tag_text = ""
     for tag in meal["tags"]:
         tag_text += f":blue-background[{tag}] "
-    
+
     st.markdown(tag_text)
 
     st.markdown(meal["summary"])
