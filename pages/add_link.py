@@ -22,9 +22,11 @@ class SourceData(BaseModel):
 def analyze_source_data(source_text: str) -> SourceData:
     """
     Analyze the 'source_text' and return the following information:
-    'title' of the information
-    a succint 'summary' to give a potential reader the key points and high level overview of what the 'source_text' contains (keep it rich but brief)
-    accurate and helpful 'tags' to categorize the 'source_text'. Max of 7 tags, but try to use at least 5.
+    'title' of the information.
+
+    Create a succint 'summary' to give a potential reader the key points and high level overview of what the 'source_text' contains (keep it rich but brief). Remember this is a summary that should tell the reader what they can expect so they can determine if they want to delve into it or not.
+
+    Generate accurate and helpful 'tags' to categorize the 'source_text'. Max of 7 tags, but try to use at least 5.
     """
 
 

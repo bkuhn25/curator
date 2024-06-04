@@ -10,7 +10,7 @@ collection = db["meals"]
 
 
 # get the meals from the db
-meals = collection.find({})
+meals = collection.find({}).sort({"eaten_on": -1})
 
 for meal in meals:
     ic(meal)
