@@ -3,6 +3,13 @@ import requests
 from pydantic import BaseModel
 import marvin
 from icecream import ic
+from pymongo import MongoClient
+import datetime
+
+# mongo client
+mongo_client = MongoClient(st.secrets["MONGO_URI"])
+db = mongo_client["curator_001"]
+collection = db["meals"]
 
 
 class SourceData(BaseModel):
@@ -46,6 +53,12 @@ if st.button("Analyzazer the link"):
 
     with st.spinner("Saving to db..."):
 
-        # save to db
+        meal_data = analysis.model_dump()
 
-        st.write("Saved to db")
+        meal_data["eaten_on"] = datetime.datetime.now(datetime.UTC)
+        meal_data["url"] = link
+
+        # save to db
+        insert_meal_res = collection.insert_one(meal_data)
+
+        st.write(f"Saved to db: {insert_meal_res.acknowledged}")
