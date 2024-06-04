@@ -15,7 +15,7 @@ meals = collection.find({})
 for meal in meals:
     ic(meal)
 
-    st.header(f"[{meal["title"]}]({meal['url']})", divider='rainbow')
+    st.header(f"[{meal['title']}]({meal['url']})", divider='rainbow')
 
     st.write(f"{meal["eaten_on"].strftime("%B %d, %Y")}")
 
