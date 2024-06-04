@@ -60,6 +60,7 @@ if st.button("Analyzazer the link"):
 
             meal_data["eaten_on"] = datetime.datetime.now(datetime.UTC)
             meal_data["url"] = link
+            meal_data["text"] = extracted_text_res.text
 
             # save to db
             insert_meal_res = collection.insert_one(meal_data)
